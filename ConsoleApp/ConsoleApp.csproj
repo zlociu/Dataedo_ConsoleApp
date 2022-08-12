@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseObject.cs" />
+    <Compile Include="DbObject.cs" />
     <Compile Include="DataReader.cs" />
     <Compile Include="DbObjectType.cs" />
     <Compile Include="Program.cs" />

@@ -7,15 +7,17 @@ Podane numery linii odnoszą się do Twojej wersji kodu.
 
 1. Program.cs
 
-- Linia 15: zła nazwa pliku, zwykła literówka, zdarza się?
+- Linia 15: zła nazwa pliku, zwykła literówka, zdarza się.
 - Dodatkowo można usunąć niepotrzebne dyrektywy 'using'.
 
 
 2. DataReader.cs
 
 - Rozdzielić metodę 'ImportAndPrintData' na trzy: ImportData(), AssignChildren() oraz PrintData(). 
-  Te 3 metody można 'zapakować' w jedną, która będzie bezpośrednio wywoływana.
+  Te 3 metody można 'zapakować' w jedną, która będzie bezpośrednio wywoływana w funkcji 'Main()'.
   Można usunąć parametr formalny 'printData', który i tak nie był używany.
+
+- Pobieranie danych z linii 20--25 można zamienić na gotową funkcję 'File.ReadAllLines(string)', zwracającą tablicę wierszy z pliku.  
 
 - Dodać konstruktor, to tam powinne być inicjalizowane pola klasy.
 
@@ -25,17 +27,21 @@ Podane numery linii odnoszą się do Twojej wersji kodu.
 - W klasie 'ImportedObject' stosować jeden sposób na definiowanie właściwości implementowanych automatycznie.
   Proponuję składnię np. 'public string Name { get; set; }'. Ważne żeby wszędzie była taka sama, poprawia to czytelność kodu.
 
-- Linia 27: pętla powinna być 'for (int i = 0; i < importedLines.Count; i++)' ('mniejsze' zamiast 'mniejsze równe').
+- Linia 27: pętla powinna wyglądać tak: 'for (int i = 0; i < importedLines.Count; i++)' ('mniejsze' zamiast 'mniejsze równe').
   Dodatkowo powinniśmy pominąć pierszy element, są tam nagłówki kolumn a nie dane. 
 
 - W funkcji wyświetlającej dane, można zamiast używania zagnieżdżonych instrukcji 'if', użyć LINQ i dostępnych metod.
 
-- Ponieważ plik 'data.csv' zawiera błędy (nie wszystkie wiersze mają 7 kolumn), należy to uwzględnić w kodzie, 
-  lub poprawić plik 'data.csv', dodając w linii 366 średnik na końcu linii.
+- Ponieważ w pliku 'data.csv' nie wszystkie wiersze mają 7 kolumn, należy to uwzględnić w kodzie, 
+  błąd w linii 366, brakuje średnika na końcu linii.
 
-- Proponuję zamienić pola 'Type' i 'ParentType' na typ wyliczeniowy
+- Proponuję zamienić pola 'Type' i 'ParentType' na typ wyliczeniowy.
 
-- Zmienić nazwy klas i pól aby były czytelniejsze np. ImportedObject na DatabaseObject.
+- Proces poprawiania danych ('clean and correct') nie musi posiadać usuwania znaków końca linii, 
+  funkcja 'ToUpper()' z linii 45 powinna być dołożona w linii 49. 
+  Musi być zachowana spójna konwencja wartości, żeby porównanie ich było możliwe.
+
+- Zmienić nazwy klas i pól aby bardziej określały co przechowują/czym się zajmują; np. ImportedObject na DbObject.
 
 ===================================================================================================================
 

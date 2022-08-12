@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    public class DatabaseObject
+    public class DbObject
     {
         public DbObjectType Type { get; set; }
         public string Name { get; set; }
@@ -17,14 +17,14 @@ namespace ConsoleApp
         public bool IsNullable { get; set; }
         public int NumberOfChildren { get; set; }
 
-        private DatabaseObject() { }
+        private DbObject() { }
 
-        public static DatabaseObject FromString(string line)
+        public static DbObject FromString(string line)
         {
             var values = line.Split(';');
-            if (values.Length != 7) throw new ArgumentException("incorrect row format");
+            if (values.Length != 7) throw new ArgumentException($"Incorrect line format: line has {values.Length} values");
 
-            return new DatabaseObject
+            return new DbObject
             {
                 Type = DbObjectTypeConverter.FromString(values[0]),
                 Name = values[1].Trim().Replace(" ", string.Empty),
